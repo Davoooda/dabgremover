@@ -5,8 +5,7 @@ import torch
 from torchvision import transforms
 from transformers import AutoModelForImageSegmentation
 from fastapi import FastAPI, Response
-from pydantic import BaseSettings
-
+from pydantic_settings import BaseSettings
 # Пример настройки приложения (опционально)
 class Settings(BaseSettings):
     model_name: str = "briaai/RMBG-2.0"
