@@ -1,4 +1,5 @@
 import os
+import time  # New import for tracking execution time
 from io import BytesIO
 from PIL import Image
 import torch
@@ -47,6 +48,10 @@ def read_root():
 @app.get("/remove_bg")
 def remove_background():
     print("Endpoint '/remove_bg' called.")
+    
+    # Start tracking execution time
+    start_time = time.perf_counter()
+    
     image_url = "https://deletmetest.awesomeheap.com/tst_img.png"
     print(f"Fetching image from URL: {image_url}")
     
@@ -117,6 +122,10 @@ def remove_background():
     result_image.save(buffer, format="PNG")
     buffer.seek(0)
     print("Result image saved to buffer.")
+
+    # Calculate and log execution time
+    elapsed_time = time.perf_counter() - start_time
+    print(f"Script execution time: {elapsed_time:.2f} seconds")
 
     print("Returning the processed image.")
     return Response(content=buffer.getvalue(), media_type="image/png")
