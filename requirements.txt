@@ -1,0 +1,7 @@
+fastapi==0.112.0
+torch==2.5.1
+torchaudio==2.5.1
+torchvision==0.20.1
+tqdm==4.66.1
+transformers==4.40.0
+uvicorn==0.30.5
